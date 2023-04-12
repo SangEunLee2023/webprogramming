@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form action="" name="계시판" method="post">
+        <fieldset>
+            <legend ><선린 게시판></legend>
+            제목:
+            <input type="text" name="제목" placeholder="게시글의 제목을 입력하세요." autofocus required>
+            <br>
+            <textarea name="내용" cols="50" rows="5" placeholder="게시글을 입력하세요."required></textarea>
+            <br>
+            해당 게시물을 공개 하시겠습니까? : 
+            <input type="radio" name="설문" value="공개" required>공개
+            <input type="radio" name="설문" value="비공개" checked required>비공개
+            <br>
+            <input type="submit" name="제출" value="제출" >
+            <input type="reset" name="초기화" value="초기화">
+        </fieldset>
+    </form>
+</body>
+</html>
