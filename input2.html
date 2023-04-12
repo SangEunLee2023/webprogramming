@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" name="form_1" method="post">
+        색을 입력해주세요:<input type="color"> 
+        <!-- color 색 지정-->
+        <br>
+        숫자를 입력하세요: <input type="number" max="100" min="0" step="10" value="50"><br> 
+        <!-- number 숫자 입력 받기 
+            max, min 값의 법위 
+            step 값의 변화 값
+            value 기본값-->
+        슬라이드를 움직어 만족도를 표시하세요<br>
+        <input type="range" min="1" max="10" value="5">
+        <!-- 슬라이드로 정보 입력 받기 
+        min, max 값의 범위
+        value 기본값 -->
+        성별을 입력하세요<br>
+        <select name="gender_select">
+            <!-- select == 값을 객관식으로 입력 받기 
+                name = select 이름 -->
+            <option value="female" selected>여성</option>
+            <option value="male">남성</option>
+            <!-- option 선택(지) 
+                value = 서버의 넘겨줄 값
+                selected = 디폴트 선택 
+                > (선택지 이름) </-->
+        </select>
+        <br>
+        <input list="browsers" name="browser" placeholder="브라우저 선택">
+        <datalist id="browsers" placeholder="구굴 크롬">
+            <!-- datalist 사용자 입력을 객관, 주관 두 가지 방식으로 입력 받을 수 있다. -->
+            <option value="구굴 크룸" ></option>
+            <option value="엣지"></option>
+            <option value="오페라"></option>
+            <option value="사피리"></option>
+            <option value="파이어 폭스"></option>
+        </datalist>
+        <br>
+        <input type="submit" value="제출" name="제출">
+    </form>
+
+</body>
+</html>
