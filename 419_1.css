@@ -1,0 +1,7 @@
+
+a:link{color: red;}
+a:visited{color: yellow;}
+.study:hover{ background-color: yellow; }
+.study#_1:hover{color: red;}
+.study#_2:hover{color: blue;}
+.study#_3:hover{color: green;}
