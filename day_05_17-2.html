@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input[type=text]{ 
+            font-weight: bold;
+            border: 3px solid blue;
+            background-color: aqua;
+            margin-bottom: 10px;
+        }
+        input[type=email]
+        {
+            font-weight: bold;
+            border: 3px solid blue;
+            color: white;
+            background-color: black;
+            margin-bottom: 10px;
+        }
+        input[type=text]:hover{
+            background-color: bisque;
+        }
+        input[type=email]:hover{
+            background-color: bisque;
+        }
+        input[type=text]:focus{
+            font-size: 1.2em;
+        }
+        input[type=email]:focus{
+            font-size: 1.2em;
+        }
+        input[type=submit]{
+            background-color: green;
+            color: white;
+            padding: 16px 32px;
+        }
+        input[type=submit]:hover{
+            background-color: red;
+            color: blue;
+        }
+        textarea:hover{
+            background-image: url();
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <form action="process.jsp">
+            <fieldset style="display: inline;">
+                <legend><h2>상품 평</h2></legend>
+                <p>받으신 상품을 평가해주세요.</p>
+                <label for="name">이름</label>
+                <input type="text" id="name" name="name" placeholder="이름"><br>
+                <label for="email">이메일</label>
+                <input type="email" id="email" name="email" placeholder="이메일"><br>
+                
+                <!-- --> <img src="./104654_196897.jpeg" alt="유겸이" width="400" height="400"><br>
+                <label for="subject">상품 평</label>
+                <textarea name="subject" name="subject" placeholder="상품을 평가해주세요." style="width: 400px; height: 400px;"></textarea><br>
+                <input type="submit" value="Sudmit">
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>

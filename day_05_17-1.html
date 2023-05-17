@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* th, td{
+            background-color: green;
+            color: white;
+        } */
+        table, th, td {border-bottom: 1px solid green; text-align: center; }
+        table{width: 100%; border-collapse: collapse;}
+        th{height: 30px; background-color: green; color: white;}
+        caption{
+            caption-side: bottom; 
+            font-size: 100px;
+        }
+        /* tr:nth-child(even)
+        {
+            background-color: orange;
+        } */
+        tbody tr:nth-child(odd){ 
+            background-color: orange;
+         }
+        tbody tr:hover{
+            background-color: red;
+            color: blue;
+        }
+        /*
+        tr#sangeun{ background-color: red;}
+        tr#sungue{background-color: orange;}
+        tr#yoogeum{background-color: yellow;}
+        tr#gimook{background-color: blue;} 
+        */       
+    </style>
+</head>
+<body>
+    <table class="MyClass">
+        <caption>My Class</caption>
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>성적</th>
+                <th>학번</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="sangeun">
+                <td>이상은</td>
+                <td>B+</td>
+                <td>10415</td>
+            </tr>
+
+            <tr id="sungue">
+                <td>이선규</td>
+                <td>C-</td>
+                <td>10417</td>
+            </tr>
+            
+            <tr id="yoogeum">
+                <td>천유겸</td>
+                <td>A-</td>
+                <td>10420</td>
+            </tr>
+            
+            <tr id="gimook">
+                <td>김지묵</td>
+                <td>A+</td>
+                <td>10401</td>
+            </tr>
+        
+            <tr>
+                <td>이서율</td>
+                <td>B</td>
+                <td>10416</td>        
+            </tr>
+
+            <tr>
+                <td>김도형</td>
+                <td>D+</td>
+                <td>10601</td>
+            </tr>
+
+            <tr>
+                <td>차호림</td>
+                <td>A</td>
+                <td>10418</td>
+            </tr>
+        </tbody>
+
+    
+    
+    </table>
+</body>
+</html>

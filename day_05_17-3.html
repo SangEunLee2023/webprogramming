@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input[type=text]{
+            width: 90%; 
+            font-weight: bold;
+            border: 3px solid blue;
+            margin-bottom: 10px;
+            padding: 6px;
+        }
+        input[type=email]
+        {
+            width: 90%; 
+            font-weight: bold;
+            border: 3px solid blue;
+            color: white;
+            margin-bottom: 10px;
+            padding: 6px;
+        }
+        input[type=submit]{
+            background-color: green;
+            color: white;
+            padding: 16px 32px;
+        }
+        textarea{
+            width: 90%;
+            padding: 30px 10px;
+            border: 3px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <h2>상품 평</h2>
+
+    <p>받으신 상품을 평가해주세요.</p>
+
+    <div>
+        <form action="process.jsp">
+            <label for="name">이름</label><br>
+            <input type="text" id="name" name="name" placeholder="이름"><br>
+            <label for="email">이메일</label><br>
+            <input type="email" id="email" name="email" placeholder="이메일"><br>
+            <label for="subject">상품 평</label><br>
+            <textarea name="subject" name="subject" placeholder="상품을 평가해주세요."></textarea><br>
+            <input type="submit" value="Sudmit">
+        </form>
+    </div>
+</body>
+</html>
