@@ -1,0 +1,31 @@
+.container{
+    /* width: 250px;
+    height: 1000px; */
+    background-color: royalblue;
+    display: flex;  /* 그냥 inline : 세로 크기 딱 맟춤 */ /* inline-flex : item 크기에 딱 맟춰서 크기가 정해짐 */
+    flex-direction: column;  /* 세로로 */
+    flex-direction: row;    /* 가로로 */
+    flex-wrap: wrap; /* : item이 공간을 초과했을때 줄바꿈 여부 */
+    /* align-content: ;  : flex-wrap을 통해서 줄바꿈을 했을때 줄바꿈 간격 또는 item의 위치를 조절 */
+    /*
+    start: 맨위
+    end: 맨 아래
+    center: 정중앙
+    strech: 줄바꿈의 간격을 모두 같은 크기로 
+    */
+
+    justify-items: center; 
+
+    /* reverse를 사용하면 순서가 거꾸로 됌 */
+    /* ex) 
+    flex-direction: column-reverse;
+    flex-direction: row-reverse;
+    */
+}
+.container .item{
+    width: 100px;
+    height: 100px;
+    border: 3px dashed red;
+    background-color: orange;
+    
+}
