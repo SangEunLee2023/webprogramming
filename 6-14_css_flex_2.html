@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        .container{
+            width: 700px;
+            height: 300px;
+            background-color: blueviolet;
+            display: flex;
+            /* justify-content: center */
+        }
+        .item{
+            width: 150px;
+            height: 150px;
+            background-color: orange;
+            border: 5px dashed brown;
+        }
+        /* order 위치 지정 */
+        /* flex=basis 서로간의 크기 비율을 지정 */
+        /* flex-grow 자손를 배치하고 남은 공간을 차치하는 비율 */
+        /* flex-shrink 자손의 크기가 너무 커서 부모으ㅣ
+                        영역을 넘어갈때 자손의 크기를 줄이는데
+                        그때의 크기비율 */
+        .item:nth-child(1){
+            order: 1;
+            flex-basis: 100%; 
+            flex-shrink: 3;
+        }
+        .item:nth-child(2){
+            order: 4;
+            /* flex-basis: 10%; */
+            flex-shrink: 1;
+        }
+        .item:nth-child(3){
+            order: 3;
+            /* flex-basis: 10%; */
+            /* flex-grow: 1; */
+            flex-shrink: 0;
+        }
+        .item:nth-child(4){
+            order: 2;
+            /* flex-basis: 40%; */
+            flex-shrink: 0;
+        }
+        .item:nth-child(5){
+            order: 5;
+            /* flex-basis: 30%; */
+            flex-shrink: 0;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="item" >1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+    </div>
+</body>
+</html>
