@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="light-bulb2.png" alt="light" id="light">
+
+    <button onclick="document.getElementById('light').src='light-bulb1.png'">전등켜기</button>
+    <button onclick="document.getElementById('light').src='light-bulb2.png'">전등끄기</button>
+    <button onclick="nameinput();">이름 출력하기</button>
+    <script>
+        let str1 = "Hello world";
+        console.log(str1);
+        document.write(str1);
+        
+        // 팝업창
+        alert(str1);
+        confirm(str1);
+        let input1 = prompt("이름을 입력해주세요");
+        document.write(input1);
+        
+        // 이름 입력함수
+        function nameinput(){
+            let name = prompt("이름을 입력하세요");
+            console.write(name);
+        }
+    </script>
+</body>
+</html>
