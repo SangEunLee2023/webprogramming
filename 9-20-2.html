@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<title>Calulator</title>
+<script>
+    function Cal(a, b)
+    {
+        document.getElementById("sum").value = parseFloat(a.value) + parseFloat(b.value);
+    }
+</script>
+
+</head>
+<body>
+    <h3>덧셈 계산기</h3>
+    <form name="myform" action="..." method="POST">
+        첫번째 정수:         <input id="x"/><br/>
+        두번째 정수:         <input id="y"/><br/>
+        합계:          <input id="sum"/><br/>
+        <button type="button" onclick="Cal(document.getElementById('x'), document.getElementById('y'));">계산</button>
+    </form>
+</body>
+</html>
