@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    아이디 입력 : <input type="id" id="i"> <br>
+    비밀번호 입력 : <input type="ps" id="ps"> <br>
+    <button onclick="SignIn(document.getElementById('i').value, document.getElementById('ps').value);"> 로그인 </button>
+    <script>
+        let data = [["sangeun1", 1234], ["sangeun2", 5678], ["sangeun5", 9101112]];
+        function SignIn(i, ps)
+        {
+            let IsIn = false;
+            for (let i = 0; i < data.length; i++)
+            {
+                if (data[i][0] == i && data[i][1] == ps)
+                {
+                    IsIn = true;
+                }
+            }
+            if (IsIn == true)
+            {
+                document.write("로그인 성공");
+            }
+            else 
+            {
+                document.write("로그인 실패");
+            }
+        }
+    </script>
+</body>
+</html>

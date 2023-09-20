@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let human = {
+        age : 0,
+        gender : "male",
+        height : 50.0,
+        HP : 100.0,
+        cry : function() { this.HP -= 10; },
+        smile : function() { this.HP += 10; }
+    };
+    human.smile();
+    document.write(human.HP + "<br>");
+    human.cry();
+    document.write(human.HP);
+    </script>
+</body>
+</html>
