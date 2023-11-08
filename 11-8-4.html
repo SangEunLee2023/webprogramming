@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<script>
+    let w;
+    function openWindow() {
+        w = window.open('https://google.com', '_blank', 'width=200, height=100', true);
+        w.document.write("<p>오늘 다음과 같은 상품을 싸게 팝니다.</p>");
+       //
+    }
+
+    function moveWindow() {
+       //
+        w.focus();
+    }
+</script>
+</head>
+<body>
+<input type="button" value="윈도우 생성" onclick="openWindow()" /> <br>
+<input type="button" value="윈도우 이동" onclick="moveWindow()" />
+</body>
+</html>

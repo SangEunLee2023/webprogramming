@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function maxopen(url, winattributes) {      // 브라우저 창 전체화면으로 출력해주는 함수.
+            let maxwindow = window.open(url, "", winattributes)
+            maxwindow.moveTo(0, 0); 
+            maxwindow.resizeTo(screen.availWidth, screen.availHeight)
+        }
+    
+     </script>
+     <a href="#" onClick="maxopen('http://www.google.com', 'resize=1, scrollbars=1, status=1'); return false">전체 화면 보기</a>
+</body>
+</html>
