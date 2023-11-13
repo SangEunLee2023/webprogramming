@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+
+<body>
+    <canvas id="myCanvas" width="300" height="200"></canvas>
+<script>
+    let canvas = document.getElementById('myCanvas');
+    let context = canvas.getContext('2d');
+    context.beginPath();
+    context.arc(100, 100, 80, 0, 2.0 * Math.PI, false);
+    context.strokeStyle = "red";
+    context.stroke();
+    context.beginPath();
+    context.arc(100, 100, 70, 0, 2.0 * Math.PI, false);
+    context.strokeStyle = "yellow";
+    context.stroke();
+    context.beginPath();
+    context.arc(100, 100, 60, 0, 2 * Math.PI, false);
+    context.closePath();
+    context.strokeStyle = "blue";
+    context.stroke();
+    context.beginPath();
+    context.arc(100, 100, 50, 0, 2.0 * Math.PI, false);
+    context.strokeStyle = "gray";
+    context.stroke();
+    context.beginPath();
+    context.arc(100, 100, 40, 0, 2 * Math.PI, false);
+    context.strokeStyle = "black";
+    context.stroke();
+    context.beginPath();
+    context.arc(100, 100, 30, 0, 2 * Math.PI, false);
+    context.strokeStyle = "pink";
+    context.stroke();
+    
+    context.beginPath();
+    context.arc(100, 100, 20, 0, 2 * Math.PI, false);
+    context.strokeStyle = "purle";
+    context.stroke();
+    
+    context.beginPath();
+    context.arc(100, 100, 10, 0, 2 * Math.PI, false);
+    context.strokeStyle = "darkred";
+    context.stroke();
+    
+    </script>
+    </body>
+    </html>

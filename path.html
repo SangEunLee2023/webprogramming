@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+<canvas id="myCanvas" width="300" height="200"
+style="border: 1px dotted red"></canvas>
+<script>
+let canvas = document.getElementById("myCanvas");
+let context1 = canvas.getContext("2d");
+context1.beginPath();
+context1.moveTo(80, 80);
+context1.lineTo(50, 120);
+context1.lineTo(150, 120);
+context1.fill();
+
+let context2 = canvas.getContext("2d");
+context2.moveTo(160, 80);
+context2.lineTo(160, 160);
+context2.lineTo(240, 160);
+context2.fill();
+
+</script>
+</body>
+</html>
