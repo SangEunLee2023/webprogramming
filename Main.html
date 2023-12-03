@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    
+    </head>
+
+    <style>
+        
+        body
+        {
+            margin: 0; padding: 0;
+            width: 100%;
+            height: 100%;
+
+            background-color: gray;
+            
+            display: flex;
+            /* flex-wrap : wrap; */
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+            /* align-content: center; */
+        }
+
+        #ToolBox
+        {
+            background-color: rgb(224,184,138);
+            border: 0.8vh solid rgb(85,56,48);
+            border-radius: 1vh;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+
+            width: 100%;
+            height: 90vh;
+
+        }
+        
+        #myCanvas
+        {
+            background-color: white;
+            
+            /* width: 100%;
+            height: 100%; */
+        }
+
+        #CanvasContainer
+        {
+            width: 80vw;
+            height: 90vh;
+            
+            margin-top: 1vh;
+            padding: 0;
+
+            border: 1vh solid black;
+            border-radius: 1vh;
+        }
+
+        #ModeBox
+        {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+            height: 10%;
+        }
+
+        #Mode
+        {
+            width: 42%;
+            height: 75%;
+            border: 0.5vh solid black;
+            border-radius: 0.5vh;
+        }
+
+        #ModeImage
+        {
+            border-radius: 0.01vh;
+        }
+
+        #ThicknessBox
+        {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 25%;
+        }
+
+        #Thickness
+        {
+            width: 60%;
+            height: 100%;
+        }
+
+        #Thickness2
+        {
+            width: 17%;
+            height: 30%;
+        }
+
+        #ThicknessBox2
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 85%;
+            height: 80%;
+        }
+
+        #ThicknessCanvas
+        {
+            width: 60%;
+            height: 80%;
+            border: 1px solid black;
+            border-radius: 1vh;
+            background-color: white;
+        }
+
+        #colorBox
+        {
+            font-size: 1.5vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #ShapeBoxContainer
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 20%;
+        }
+
+        #ShapeBox
+        {
+            background-color: gray;
+            width: 90%;
+            height: 90%;
+            border: 0.3vh solid black;
+            border-radius: 1vh;
+            /* background-color: white;   */
+        }
+        
+        [type=radio]
+        { 
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        [type=radio] + img, button, [type=range], [type=color]
+        {
+            cursor: pointer;
+        }
+
+        [type=radio].Mode:checked + img
+        {
+            outline: 0.5vh solid rgb(30, 255, 0)
+        }
+        
+        [type=radio].Shape:checked + img
+        {
+            outline: 0.5vh solid red
+        }
+
+        td
+        {
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 0.2vh solid black;
+            border-radius: 1vh;
+            padding: 1vh;
+            margin: 0.2vh;
+        }
+
+        label
+        {
+            margin: 0;
+            padding: 0;
+        }
+
+        label.Shape
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #Clear
+        {
+            width: 90%;
+            height: 100%;
+            border: 0.3vh solid gray;
+            border-radius: 1vh;
+            background-color: black;
+            color: white;
+            font-size: 1.8vh;
+        }
+
+        #SaveButton
+        {
+            font-size: 1.7vh;
+            background-color: brown;
+            color: greenyellow;
+            border: 0.4vh solid #000000;
+            border-radius: 1vh;
+        }
+
+        #BackButton
+        {
+            font-size: 1.7vh;
+            background-color: blue;
+            color: lightgreen;
+            border: 0.4vh solid black;
+            border-radius: 1vh;
+        }
+
+        button#Clear:active
+        {
+            color: black;
+            background-color: red;
+        }
+
+        button#SaveButton:active
+        {
+            background-color: lightgreen;
+            color: brown;
+        }
+
+        button#BackButton:active
+        {
+            background-color: yellow;
+            color: green;
+        }
+
+        #NameBox
+        {
+            border: 0.5vh solid black;
+            border-radius: 1vh;
+            background-color: brown;
+            color: whitesmoke;
+        }
+
+    </style>
+
+    <body>
+
+        <div style="display: flex; flex-direction: column; justify-content: space-evenly; width: 15vw; height: 97vh;">
+            <div id="NameBox" style="width: 100%; margin-left: 0.4vh;">
+                <label style="font-size: 2vh; margin: 1vh; display: flex; flex-direction: column; justify-content: space-evenly; align-items: center;"> 
+                    그림의 제목을 입력해주세요.
+                    <input type="text" id="name" style=" margin-top: 1vh; width: 95%; height: 10%;">
+                </label>
+            </div>
+
+            <div id="ToolBox">
+                <div id="ModeBox">
+                    
+                    <label id="Mode">
+                        <input type="radio" name="g" value="Write" id="Write" class="Mode" checked>
+                            <img id="ModeImage" src="Images//Pencel.png" alt="쓰기" style="width: 100%; height: 100%;">
+                        </input>
+                    </label> 
+        
+                    <label id="Mode">
+                        <input type="radio" name="g" value="Eraser" id="Eraser" class="Mode">
+                            <img id="ModeImage" src="Images//Eraser.png" alt="지우기" style="width: 100%; height: 100%;">
+                        </input>
+                    </label> 
+                
+                </div>
+    
+                <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 10%;">
+                    <button id="Clear">
+                    전체 화면 지우기</button>
+                </div>
+                
+                <div id="ThicknessBox">
+                    <div id="ThicknessBox2">
+                        <canvas id="ThicknessCanvas"></canvas>
+                    </div>
+    
+                    <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 15%;">
+                         <div style="display: flex; width: 10%; height: 100%; align-items: center;"><div style="font-size: 1.3vh; display: inline-block; margin: 0; padding: 0;">굵기</div></div>
+                         <input type="number" id="Thickness2" value="1" oninput="document.getElementById('Thickness').value = this.value;"
+                        style="padding: 2px 2px;">
+                         <div style="display: flex; width: 10%; height: 100%; align-items: center;"><div style="display: inline-block; margin: 0; padding: 0;">px</div></div>
+                    </div>
+            
+                    <div style="display: flex; width: 100%; height: 10%; margin: 0; justify-content: space-evenly; align-items: center;">
+                        <input type="range" id="Thickness" value="1" min="1" max="100" oninput="document.getElementById('Thickness2').value = this.value;"
+                        style="margin: 0; padding: 0;">
+                    </div>
+                </div>
+                
+                <div id="colorBox" >
+    
+                    <label style="display: flex; justify-content: center;">색상<input type="color" id="Color"></label>
+    
+                    <label style="display: flex; justify-content: center;">배경 색상<input type="color" id="BackColor" value="#FFFFFF"></label>
+    
+                </div>
+    
+                <div id="ShapeBoxContainer">
+                    <table id="ShapeBox" border="1">
+                        <tr style="display: flex; justify-content: center; align-items: center;">
+                            
+                            <td>
+                                <label class="Shape">
+                                    <input type="radio" name="s" class="Shape" value="Default" checked> 
+                                        <img src="Images/Default.png" alt="기본" style="width: 100%; height: 100%;">
+                                    </input>
+                                </label>
+                            </td>
+                            
+                            <td>
+                                <label class="Shape">
+                                    <input type="radio" name="s" class="Shape" value="Line">
+                                        <img src="Images/line.png" alt="선" style="width: 100%; height: 100%;">
+                                    </input>
+                                </label>
+                            </td>
+                           
+                            <td>
+                                <label class="Shape">
+                                    <input type="radio" name="s" class="Shape" value="Circle" id="Default">
+                                        <img src="Images/Circle.png" alt="원" style="width: 100%; height: 100%;">
+                                    </input>
+                                </label>
+                            </td>
+    
+                        </tr>
+    
+                        <tr style="display: flex; justify-content: center; align-items: center;">
+                            
+                            <td>
+                                <label class="Shape">
+                                    <input type="radio" name="s" class="Shape" value="Rect">
+                                        <img src="Images/Rect.png" alt="네모" style="width: 100%; height: 100%;">
+                                    </input>
+                                </label>
+                            </td>
+                            
+                            <td>
+                                <label class="Shape">
+                                    <input type="radio" name="s" class="Shape" value="FillCircle">
+                                        <img src="Images/FillCircle.png" alt="채운 원" style="width: 100%; height: 100%;">
+                                    </input>
+                                </label>
+                            </td>
+                            
+                            <td>
+                                <label class="Shape">
+                                    <input type="radio" name="s" class="Shape" value="FillRect">
+                                        <img src="Images/FillRect.png" alt="채운 선" style="width: 100%; height: 100%;">
+                                    </input>
+                                </label>
+                            </td>
+    
+                        </tr>
+                    </table>
+                </div>
+    
+                <label style="display: flex; justify-content: center; height: 5%; width: 90%;"> 
+                    <button id="SaveButton" onclick="SaveButton(canvas.toDataURL(), document.getElementById('name').value)" style="width: 90%; height: 100%;">저장</button> </label>
+            
+                <label style="display: flex; justify-content: center; height: 5%; width: 90%;"> 
+                    <button id="BackButton" onclick="BackButton()" style="width: 90%; height: 100%;">뒤로가기</button> </label>
+            </div>
+        </div>
+        
+
+        <div id="CanvasContainer">
+            <canvas id="myCanvas"></canvas>
+        </div>
+
+        <script>
+            let Deleted = false;
+
+            let FristDrawing = true;
+            
+            let Color = "#000000"
+            let BackColor = "#FFFFFF";
+            let EraserColor = BackColor;
+
+            var canvas = document.querySelector("#myCanvas");
+            let context = canvas.getContext("2d");
+
+            var canvas2 = document.querySelector("#ThicknessCanvas");
+            let context2 = canvas2.getContext("2d");
+
+            var ImageQueue = new Array();
+            
+            {
+                var img = new Image();
+                img.src = canvas.toDataURL();
+                ImageQueue.unshift(new Array(img ,"#FFFFFF")); 
+            }
+
+            var canvasContainer = document.querySelector("#CanvasContainer"); 
+
+            canvas.width = canvasContainer.clientWidth;
+            canvas.height = canvasContainer.clientHeight;
+        
+            window.addEventListener // 창의 크기가 바뀜에 따라 캔버스의 크기도 바꿈.
+            ('resize', function()
+                {
+                    var imageData = canvas.toDataURL();
+                    
+                    canvas.width = canvasContainer.clientWidth;
+                    canvas.height = canvasContainer.clientHeight;
+
+                    var img = new Image(); // 이미지 객체를 생성하고
+
+                    img.onload = function () // 이미지가 로드된 후에
+                    { 
+                        context.drawImage(img, 0, 0); // 복사할 캔버스의 컨텍스트를 가져와 drawImage를 호출해 다시 그려준다.
+                    };
+
+                    img.src = imageData;
+                }
+            )
+
+            var convas2Container = document.querySelector("#ThicknessBox2");
+
+            canvas2.width = convas2Container.clientWidth * 0.6;
+            canvas2.height = convas2Container.clientHeight * 0.8;
+
+            // window.addEventListener // 창의 크기가 바뀜에 따라 캔버스의 크기도 바꿈.
+            // ('resize', function()
+            //     {
+            //         var imageData = canvas2.toDataURL();
+                    
+            //         canvas2.width = canvasContainer.clientWidth * 0.7;
+            //         canvas2.height = canvasContainer.clientHeight * 0.8;
+
+            //         var img = new Image(); // 이미지 객체를 생성하고
+
+            //         img.onload = function () // 이미지가 로드된 후에
+            //         { 
+            //             context2.drawImage(img, 0, 0); // 복사할 캔버스의 컨텍스트를 가져와 drawImage를 호출해 다시 그려준다.
+            //         };
+
+            //         context2.clearRect(0, 0, canvas2.width, canvas2.height);
+                    
+            //         img.src = imageData;
+            //     }
+            // )
+
+            var range = document.querySelector("#Thickness");
+            var number = document.querySelector("#Thickness2");
+
+            context2.beginPath();
+            context2.clearRect(0, 0, canvas2.width, canvas2.height);
+            context2.arc(canvas2.width/2, canvas2.height/2, range.value/2, 0, Math.PI * 2);
+            context2.fill();
+
+            range.addEventListener
+            ('input', function(e)
+                {
+                    context2.beginPath();
+                    context2.clearRect(0, 0, canvas2.width, canvas2.height);
+                    context2.arc(canvas2.width/2, canvas2.height/2, range.value/2, 0, Math.PI * 2);
+                    context2.fill();    
+                }
+            )
+
+            number.addEventListener
+            ('input', function(e)
+                {
+                    context2.beginPath();
+                    context2.clearRect(0, 0, canvas2.width, canvas2.height);
+                    context2.arc(canvas2.width/2, canvas2.height/2, range.value/2, 0, Math.PI * 2);
+                    context2.fill();    
+                }
+            )
+                
+            var colorPicker = document.querySelector("#Color");
+
+            colorPicker.addEventListener('input', function()    
+                {
+                    Color = colorPicker.value;
+                }
+            )
+
+            var colorPicker2 = document.querySelector("#BackColor");
+
+            colorPicker2.addEventListener('click', function()
+            {
+                var imageData = canvas.toDataURL();
+                var img = new Image();
+
+                img.src = imageData;
+
+                ImageQueue.unshift(new Array(img, colorPicker2.value));
+
+                document.getElementById("BackButton").disabled = false;
+                document.getElementById("BackButton").style.backgroundColor = "blue";
+                document.getElementById("BackButton").style.color = "lightgreen";
+            })
+
+            colorPicker2.addEventListener('input', function() 
+                {
+                    EraserColor = colorPicker2.value;
+                    ClearCanvas();
+                }
+            )
+
+            let last_x = 0, last_y = 0;
+            
+            let draw_mode = false;
+            
+            let Type = document.querySelector('input[name="g"]:checked').value;
+            let Type2 = "Default"; 
+            let drawing = false;
+
+            var PrevImg = new Array();
+            PrevImg[0] = new Image();
+
+            canvas.addEventListener
+            ("mousemove", function (event) 
+                {
+                    if (!draw_mode) return;
+
+                    let x = event.offsetX;
+                    let y = event.offsetY;
+
+                    if (Type2 == "Default")
+                    {
+                        context.lineTo(x, y);
+                        context.stroke();   
+                    }
+                    else
+                    {
+                        context.closePath();
+                        context.beginPath();
+                    }
+
+                    if (!drawing)
+                    {
+                        last_x = x;
+                        last_y = y;
+                    }
+                    else
+                    {
+                        context.strokeStyle = Color;
+                        context.fillStyle = Color;
+
+                        context.clearRect(0, 0, canvas.width, canvas.height);
+                        context.drawImage(PrevImg[0], 0, 0);
+
+                        if (Type2 == "Line")
+                        {
+                            context.moveTo(last_x, last_y);
+                            context.lineTo(event.offsetX, event.offsetY);
+                            context.stroke();
+                            context.closePath();
+                        }
+                        else if (Type2 == "Circle")
+                        {
+                            context.arc((last_x + event.offsetX)/2, (last_y + event.offsetY)/2,
+                                    Math.sqrt(Math.pow(event.offsetX - last_x, 2) + Math.pow(event.offsetY - last_y, 2))/2,
+                                    0, Math.PI * 2);
+                            
+                            
+                            context.stroke();
+                            context.closePath();
+                        }
+                        else if (Type2 == "Rect")  
+                        {
+                            context.strokeRect(last_x, last_y, event.offsetX - last_x, event.offsetY - last_y);
+                            context.stroke();
+                            context.closePath();
+                        }
+                        else if (Type2 == "FillCircle")
+                        {
+                            let PrevThickness = range.value;
+                            context.lineWidth = 1;
+                            context.arc((last_x + event.offsetX)/2, (last_y + event.offsetY)/2,
+                                    Math.sqrt(Math.pow(event.offsetX - last_x, 2) + Math.pow(event.offsetY - last_y, 2))/2,
+                                    0, Math.PI * 2);
+                            
+
+                            context.lineWidth = PrevThickness
+                            context.fill();
+                            context.closePath();
+                        }
+                        else if (Type2 == "FillRect")  
+                        {
+                            let PrevThickness = range.value;
+
+                            context.fillRect(last_x, last_y, event.offsetX - last_x, event.offsetY - last_y);
+
+                            context.lineWidth = PrevThickness
+                            context.closePath();
+                        }
+                    }
+                }
+            );
+
+            canvas.addEventListener
+            ("mousedown", function (event) 
+                {
+                    if (FristDrawing)
+                    {
+                        var imageData = canvas.toDataURL();
+                        var img = new Image();
+
+                        img.src = imageData;
+
+                        ImageQueue.unshift(new Array(img, colorPicker2.value));
+                        
+                        document.getElementById("BackButton").disabled = false;
+                        document.getElementById("BackButton").style.backgroundColor = "blue";
+                        document.getElementById("BackButton").style.color = "lightgreen";
+                        
+                        FristDrawing = false;
+                        Deleted = false;
+
+                        console.log("Down");
+                        console.log(ImageQueue.length);
+                    }
+        
+                    Type = document.querySelector('input[name="g"]:checked').value;
+                    try
+                    {
+                        Type2 = document.querySelector('input[name="s"]:checked').value;
+                    }
+                    catch(e)
+                    {
+                        if (e.name == "ReferenceError")
+                        {
+                            console.log("Fail");
+                            Type2 = "Default";
+                        }
+                        else 
+                        {
+                            alert(`다음과 같은 에러가 발생했습니다: ${e.name}: ${e.message}`);
+                        }
+                    }
+
+                    context.lineWidth = document.getElementById("Thickness").value
+                    context.lineCap = 'round';
+
+
+                    if (Type == "Write") 
+                    {
+                        context.strokeStyle = Color;
+                        context.fillStyle = Color;
+                    }
+                    else if (Type == "Eraser") 
+                    {
+                        context.strokeStyle = EraserColor;
+                        context.fillStyle = EraserColor;
+                    }
+
+                    if (Type2 == "Default")
+                    {
+                        last_x = event.offsetX;
+                        last_y = event.offsetY;
+                    }
+                    else 
+                    {
+                        if (!drawing)
+                        {
+                            last_x = event.offsetX;
+                            last_y = event.offsetY;
+                            drawing = true;
+                        }
+                    }
+                    
+                    context.beginPath();
+
+                    context.moveTo(last_x, last_y);
+                    
+                    draw_mode = true;
+                
+                }
+            );
+
+            canvas.addEventListener
+            ("mouseup", function (event) 
+                {
+                    console.log("UP")
+                    console.log(ImageQueue.length);
+                    console.log(ImageQueue);
+
+                    if (Type2 == "Default")
+                    {
+                        context.closePath();
+                    }
+                    else
+                    {
+                        context.strokeStyle = Color;
+                        context.fillStyle = Color;
+
+                        context.drawImage(PrevImg[0], 0, 0);
+                        if (Type2 == "Line")
+                        {
+                            context.moveTo(last_x, last_y);
+                            context.lineTo(event.offsetX, event.offsetY);
+                            context.stroke();
+                            context.closePath();
+                        }
+                        else if (Type2 == "Circle")
+                        {
+                            context.arc((last_x + event.offsetX)/2, (last_y + event.offsetY)/2,
+                                    Math.sqrt(Math.pow(event.offsetX - last_x, 2) + Math.pow(event.offsetY - last_y, 2))/2,
+                                    0, Math.PI * 2);
+                            
+                            
+                            context.stroke();
+                            context.closePath();
+                        }
+                        else if (Type2 == "Rect")  
+                        {
+                            context.strokeRect(last_x, last_y, event.offsetX - last_x, event.offsetY - last_y);
+                            context.stroke();
+                            context.closePath();
+                        }
+                        else if (Type2 == "FillCircle")
+                        {
+                            let PrevThickness = range.value;
+                            context.lineWidth = 1;
+                            context.arc((last_x + event.offsetX)/2, (last_y + event.offsetY)/2,
+                                    Math.sqrt(Math.pow(event.offsetX - last_x, 2) + Math.pow(event.offsetY - last_y, 2))/2,
+                                    0, Math.PI * 2);
+                            
+
+                            context.lineWidth = PrevThickness
+                            context.fill();
+                            context.closePath();
+                        }
+                        else if (Type2 == "FillRect")  
+                        {
+                            let PrevThickness = range.value;
+
+                            context.fillRect(last_x, last_y, event.offsetX - last_x, event.offsetY - last_y);
+
+                            context.lineWidth = PrevThickness
+                            context.closePath();
+                        }
+                    }
+
+                    FristDrawing = true;
+                    drawing = false;
+                    draw_mode = false;
+                    PrevImg[0].src = canvas.toDataURL();
+                    PrevImg[1] = colorPicker2.value;
+
+                    last_x = event.offsetX;
+                    last_y = event.offsetY;
+                }
+            );
+
+            canvas.addEventListener
+            ("mouseout", function (event) 
+                {
+                    FristDrawing = true;
+                    draw_mode = false;
+                    drawing = false;
+                    PrevImg[0].src = canvas.toDataURL();
+                    PrevImg[1] = colorPicker2.value;
+
+                    last_x = event.offsetX;
+                    last_y = event.offsetY;
+                }
+            );
+
+            var ShapeBox = document.getElementById("ShapeBox");
+
+            ShapeBox.onclick = function() 
+            {
+                if (Type2 != "Default")
+                {
+                    var imageData = canvas.toDataURL(); 
+
+                    var img = new Image(); // 이미지 객체를 생성하고
+
+                    PrevImg[0].onload = function()
+                    {
+                        context.drawImage(PrevImg[0], 0, 0);
+                    }
+
+                    PrevImg[0].src = canvas.toDataURL();
+                    PrevImg[1] = colorPicker2.value;
+                }
+            }
+
+            function ClearCanvas()
+            {
+                context.fillStyle = colorPicker2.value;
+                context.fillRect(0, 0, canvas.width, canvas.height);
+                
+                PrevImg[0].src = canvas.toDataURL();
+                PrevImg[1] = colorPicker2.value;
+                
+                context.fillStyle = colorPicker.value;
+            }
+
+            function SaveButton(uri, name){
+                var link = document.createElement("a")
+                link.download = name;
+                link.href = uri;
+                document.body.appendChild(link);
+                link.click();
+            }
+
+            function BackButton() 
+            {
+                var Prevdata = ImageQueue.shift(); 
+             
+                console.log(Prevdata);
+
+                PrevImg[0] = Prevdata[0];
+                PrevImg[1] = Prevdata[1];
+
+                context.drawImage(PrevImg[0], 0, 0);
+                colorPicker2.value = PrevImg[1];
+
+                if (ImageQueue.length == 0)
+                {
+                    document.getElementById("BackButton").disabled = true;
+                    document.getElementById("BackButton").style.backgroundColor = "darkblue";
+                    document.getElementById("BackButton").style.color = "green";
+                }
+                else
+                {
+                    document.getElementById("BackButton").disabled = false;
+                    document.getElementById("BackButton").style.backgroundColor = "blue";
+                    document.getElementById("BackButton").style.color = "lightgreen";
+                }
+            }
+
+            document.getElementById("Clear").addEventListener('click', function()
+            {
+                if (!Deleted)
+                {
+                    var imageData = canvas.toDataURL();
+                    var img = new Image();
+
+                    img.onload = function () // 이미지가 로드된 후에
+                    { 
+                        ImageQueue.unshift(new Array(img, colorPicker2.value));
+                    };
+                    
+                    img.src = imageData;   
+
+                    document.getElementById("BackButton").disabled = false;
+                    document.getElementById("BackButton").style.backgroundColor = "blue";
+                    document.getElementById("BackButton").style.color = "lightgreen";
+
+                    ClearCanvas();
+
+                    Deleted = true;
+                }
+            });
+
+            if (ImageQueue.length == 0)
+            {
+                document.getElementById("BackButton").disabled = true;
+                document.getElementById("BackButton").style.backgroundColor = "darkblue";
+                document.getElementById("BackButton").style.color = "green";
+            }
+            else
+            {
+                document.getElementById("BackButton").disabled = false;
+                document.getElementById("BackButton").style.backgroundColor = "blue";
+                document.getElementById("BackButton").style.color = "lightgreen";
+            }
+                
+            ClearCanvas();
+        </script>
+
+    </body>
+
+</html>
